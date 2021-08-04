@@ -72,18 +72,21 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
             
             // 解析标签
             Element bean = (Element) childNodes.item(i);
+            // 分别取出 xml bean节点中的 id、name、class 的属性值
             String id = bean.getAttribute("id");
             String name = bean.getAttribute("name");
             String className = bean.getAttribute("class");
-            // 获取 Class，方便获取类中的名称
+            //注意， id 和name的属性都可以没有，但是 class 属性是必须要有且全限定名路径必须要准确，否则，无法实例化业务bean，会报异常
+            // 获取 Class，方便获取类中的名称，获取xml的bean节点中 的class属性的类的全限定名，然后通过反射 获得对应全限定名的class类
             Class<?> clazz = Class.forName(className);
-            // 优先级 id > name
+            // 优先级 id > name，若xml的bean节点中 id和name属性都配置了值，则优先选用id的属性值作为 bean的name
             String beanName = StrUtil.isNotEmpty(id) ? id : name;
+            // 若 xml的bean节点中 id和name属性都没有配置值，则从class全限定名中截取 类名作为 beanName
             if (StrUtil.isEmpty(beanName)) {
                 beanName = StrUtil.lowerFirst(clazz.getSimpleName());
             }
 
-            // 定义Bean
+            // 定义Bean ，将业务类的class 封装到 beanDefinitino对象中
             BeanDefinition beanDefinition = new BeanDefinition(clazz);
             // 读取属性并填充
             for (int j = 0; j < bean.getChildNodes().getLength(); j++) {
@@ -103,7 +106,8 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
             if (getRegistry().containsBeanDefinition(beanName)) {
                 throw new BeansException("Duplicate beanName[" + beanName + "] is not allowed");
             }
-            // 注册 BeanDefinition
+            // 注册 BeanDefinition ，由于 测试用例中使用的 是DefaultListableBeanFactory 的工厂类，故 getRegistry()方法获得 是DefaultListableBeanFactory 的工厂类
+            // 通过从 xml的bean节点中 解析出的 数据并通过反射 class全限定名获得的 beanDefinition 对象 放入到 beanDefinitionMap的 容器中
             getRegistry().registerBeanDefinition(beanName, beanDefinition);
         }
     }

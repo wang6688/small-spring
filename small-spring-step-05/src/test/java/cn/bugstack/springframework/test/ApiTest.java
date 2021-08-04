@@ -98,9 +98,12 @@ public class ApiTest {
 
         // 2. 读取配置文件&注册Bean
         XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(beanFactory);
+        // 读取 xml文件，解析其中的bean节点信息，通过bean节点的class属性值反射构建出 beanDefinition对象 放入到 beanDefinitionMap容器中
         reader.loadBeanDefinitions("classpath:spring.xml");
 
-        // 3. 获取Bean对象调用方法
+        // 3. 获取Bean对象调用方法， 初次调用getBean 方法是从 beanDefinitionMap中查到业务bean的class，
+        // 然后通过cglib代理或jdk代理反射出业务的bean对象，然后放入到 singletonObjects 的map容器中，
+        // 下次再次调用getBean方法时就是从 singletonObjects的map中去查找并返回了。
         UserService userService = beanFactory.getBean("userService", UserService.class);
         String result = userService.queryUserInfo();
         System.out.println("测试结果：" + result);
