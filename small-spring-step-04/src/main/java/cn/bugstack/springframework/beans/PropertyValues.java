@@ -4,14 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
- * 公众号：bugstack虫洞栈
- * Create by 小傅哥(fustack)
+ 该类，封装了 PropertyValue 为一个 list，用来存储 业务bean的 多个 属性信息
  */
 public class PropertyValues {
-
+    //
     private final List<PropertyValue> propertyValueList = new ArrayList<>();
-
+    // 手动添加 单个 属性信息
     public void addPropertyValue(PropertyValue pv) {
         this.propertyValueList.add(pv);
     }

@@ -10,7 +10,7 @@ import cn.bugstack.springframework.beans.PropertyValues;
 public class BeanDefinition {
 
     private Class beanClass;
-
+    // 该对象用于存储 业务bean中的 属性信息，可能包含多个属性（基本类型的属性，或引用类型的 属性）
     private PropertyValues propertyValues;
 
     public BeanDefinition(Class beanClass) {
