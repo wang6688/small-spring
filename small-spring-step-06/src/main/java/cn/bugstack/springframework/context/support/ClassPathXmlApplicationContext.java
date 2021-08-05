@@ -37,6 +37,7 @@ public class ClassPathXmlApplicationContext extends AbstractXmlApplicationContex
      * @throws BeansException
      */
     public ClassPathXmlApplicationContext(String[] configLocations) throws BeansException {
+        // 注入xml的bean资源配置
         this.configLocations = configLocations;
         refresh();
     }

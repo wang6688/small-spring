@@ -104,7 +104,7 @@ public class ApiTest {
         // 3. 获取Bean对象调用方法， 初次调用getBean 方法是从 beanDefinitionMap中查到业务bean的class，
         // 然后通过cglib代理或jdk代理反射出业务的bean对象，然后放入到 singletonObjects 的map容器中，
         // 下次再次调用getBean方法时就是从 singletonObjects的map中去查找并返回了。
-        UserService userService = beanFactory.getBean("userService", UserService.class);
+         UserService userService = beanFactory.getBean("userService", UserService.class);
         String result = userService.queryUserInfo();
         System.out.println("测试结果：" + result);
     }

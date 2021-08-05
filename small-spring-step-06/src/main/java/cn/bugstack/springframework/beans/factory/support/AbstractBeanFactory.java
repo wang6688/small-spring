@@ -18,7 +18,9 @@ import java.util.List;
  */
 public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implements ConfigurableBeanFactory {
 
-    /** BeanPostProcessors to apply in createBean */
+    /** BeanPostProcessors to apply in createBean  */
+
+    //  该对象用于存储  业务bean对象在 实例化前或实例化后的  进行处理动作的 处理器
     private final List<BeanPostProcessor> beanPostProcessors = new ArrayList<BeanPostProcessor>();
 
     @Override
@@ -37,12 +39,14 @@ public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry i
     }
 
     protected <T> T doGetBean(final String name, final Object[] args) {
+        // 优先从singletonObjects的map 容器中获取对象返回
         Object bean = getSingleton(name);
         if (bean != null) {
             return (T) bean;
         }
-
+        // 从 beanDefinitionMap中通过beanName找到对应的 beanDefinition，该beanDefinition因为在 之前的xml解析资源文件时已经将bean放入到beanDefinitionMap中了
         BeanDefinition beanDefinition = getBeanDefinition(name);
+       // 中调用其业务bean的构造器实例化出业务bean并填充属性，执行后置处理器，将业务bean 放入到 singletonObjectsd的 map容器中
         return (T) createBean(name, beanDefinition, args);
     }
 

@@ -25,7 +25,8 @@ import java.io.InputStream;
  * Create by 小傅哥(fustack)
  */
 public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
-
+    // 此处有个BeanDefinitino接口的实现 registry (DefaultListableBeanFacotry)对象 是继承来自于 其父类AbstractBeanDefinitionReader 中，可通过构造器进行指定该对象的值
+    // 此处 有个 resourceLoader 对象 也是  继承来自于其父类AbstractBeanDefinitionReader 中，可通过构造其进行指定
     public XmlBeanDefinitionReader(BeanDefinitionRegistry registry) {
         super(registry);
     }
@@ -65,7 +66,7 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
             loadBeanDefinitions(location);
         }
     }
-
+    // 从 xml的资源文件中，读取 bean节点及其属性的信息，构建出 beanDefinition对象 并放置到 beanDefinitinoMap的容器中
     protected void doLoadBeanDefinitions(InputStream inputStream) throws ClassNotFoundException {
         Document doc = XmlUtil.readXML(inputStream);
         Element root = doc.getDocumentElement();

@@ -15,10 +15,13 @@ import cn.bugstack.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 public abstract class AbstractXmlApplicationContext extends AbstractRefreshableApplicationContext {
 
     @Override
+    // xmlBean的读取解析类 读取 xml资源的配置文件
     protected void loadBeanDefinitions(DefaultListableBeanFactory beanFactory) {
         XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory, this);
+        // 该 getConfigLocations() 方法实际是调用的 其实现子类ClassPathXmlApplicationContext中由构造器传入的xml资源配置文件路径
         String[] configLocations = getConfigLocations();
         if (null != configLocations){
+            // 用 xmlBeanDefinition的读取解析类去 读取并解析 xml资源配置文件中的bean节点等信息，将其封装到 beanDefinition对象中，并放入到beanDefinitionMap容器中
             beanDefinitionReader.loadBeanDefinitions(configLocations);
         }
     }
