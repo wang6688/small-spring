@@ -43,6 +43,10 @@ public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry i
         }
 
         BeanDefinition beanDefinition = getBeanDefinition(name);
+//        当 业务bean 调用代理类 1.实例化好了--> 2.属性值填充好了--> 3.在初始化前调用后置处理器执行一些操作（选填）-->
+        //  4.执行初始化操作【必要操作】（1.若业务bean的类实现了InitializingBean 接口，则可以调用业务bean的afterPropertiesSet方法{实现自InitializingBean接口方法}执行一些必要的操作
+        //                              2.若xml的配置文件中 手工指定了初始化的方法名，则也会调用业务bean中对应的 初始化方法 进行初始化）
+        // 5. 将经过这一系列实例化初始化处理后的 业务bean 对象放入到 singletonObjects的map容器中。
         return (T) createBean(name, beanDefinition, args);
     }
 

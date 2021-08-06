@@ -21,7 +21,9 @@ public abstract class AbstractRefreshableApplicationContext extends AbstractAppl
 
     @Override
     protected void refreshBeanFactory() throws BeansException {
+        // 创建 beanFactory
         DefaultListableBeanFactory beanFactory = createBeanFactory();
+        // 用xmlBeanDefinitinoReader 读取解析 xml资源配置文件中的bean节点 ，封装到 beanDefinition 对象中，并将 beanDefinition对象放入到 beanDefinitinoMap的容器中
         loadBeanDefinitions(beanFactory);
         this.beanFactory = beanFactory;
     }

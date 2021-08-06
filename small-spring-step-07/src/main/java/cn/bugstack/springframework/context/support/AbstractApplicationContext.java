@@ -25,19 +25,22 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader i
 
     @Override
     public void refresh() throws BeansException {
-        // 1. 创建 BeanFactory，并加载 BeanDefinition
+        // 1. 创建 BeanFactory，并加载 BeanDefinition：读取解析xml资源配置文件，将配置文件中的bean节点信息封装为 beanDefinition对象放入到 beanDefinitinoMap容器中
         refreshBeanFactory();
 
-        // 2. 获取 BeanFactory
+        // 2. 获取 BeanFactory ，此处获取的beanFactory 是从 步骤1中得到的
         ConfigurableListableBeanFactory beanFactory = getBeanFactory();
 
         // 3. 在 Bean 实例化之前，执行 BeanFactoryPostProcessor (Invoke factory processors registered as beans in the context.)
+       // 注意： 在本案例7 中，並沒有配置 BeanFacotryPostProcessor的 实现类，所以没有可供调用的 后置处理器
         invokeBeanFactoryPostProcessors(beanFactory);
 
         // 4. BeanPostProcessor 需要提前于其他 Bean 对象实例化之前执行注册操作
+        //注意： 在本案例7 中，並沒有配置 BeanPostProcessor的 实现类，所以没有可供调用的 后置处理器
         registerBeanPostProcessors(beanFactory);
 
-        // 5. 提前实例化单例Bean对象
+        // 5. 提前实例化单例Bean对象,将 beanDefinitionMap中的业务bean对象进行 通过调用对应的构造器进行实例化出 代理类对象，
+        // 并将代理类对象放入到 singletonObjects的map容器中 ，经此预初始化 行为后，下次用户可直接从singletonObjects的map中获得 业务bean对象的实例，而无需再花费时间进行实例化。。
         beanFactory.preInstantiateSingletons();
     }
 
@@ -46,8 +49,10 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader i
     protected abstract ConfigurableListableBeanFactory getBeanFactory();
 
     private void invokeBeanFactoryPostProcessors(ConfigurableListableBeanFactory beanFactory) {
+        // 获得BeanFactoryPostProcessor 后置处理器接口的 实现类的 实例化好的代理对象（已放入到 singletonObjects的map容器中）
         Map<String, BeanFactoryPostProcessor> beanFactoryPostProcessorMap = beanFactory.getBeansOfType(BeanFactoryPostProcessor.class);
         for (BeanFactoryPostProcessor beanFactoryPostProcessor : beanFactoryPostProcessorMap.values()) {
+            // 依次调用 BeanFactoryPostProcessor 后置处理器 的实现类，来对 BeanDefinition对象 作一些后置处理操作
             beanFactoryPostProcessor.postProcessBeanFactory(beanFactory);
         }
     }
@@ -86,6 +91,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader i
 
     @Override
     public void registerShutdownHook() {
+        // 在 JVM 关闭的时候，开辟一个线程 来将 实现了 DisposableBean 接口的业务bean，调用其对应的 销毁方法 执行内存清理对象销毁等操作。
         Runtime.getRuntime().addShutdownHook(new Thread(this::close));
     }
 

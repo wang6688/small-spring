@@ -16,11 +16,13 @@ public class UserService implements InitializingBean, DisposableBean {
     private UserDao userDao;
 
     @Override
+    // 该方法实现自 DisposableBean 接口
     public void destroy() throws Exception {
         System.out.println("执行：UserService.destroy");
     }
 
     @Override
+    // 该方法实现自InitializingBean 接口
     public void afterPropertiesSet() throws Exception {
         System.out.println("执行：UserService.afterPropertiesSet");
     }

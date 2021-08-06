@@ -28,13 +28,20 @@ public class DisposableBeanAdapter implements DisposableBean {
     }
 
     @Override
+    /***在JVM 关闭前 会先执行此方法，因为其被注册为  Runtime.getRuntime().addShutdownHook() 系统函数的回调
+     *  该方法支持2种类型的销毁：
+     *  1. 实现了 DisposableBean 接口的类
+     *  2. 通过xml配置文件手工指定 销毁方法名，并且销毁方法在业务bean中存在。
+     *
+     * */
     public void destroy() throws Exception {
-        // 1. 实现接口 DisposableBean
+        // 1. 实现接口 DisposableBean: 若业务bean实现了DisposableBean 接口则调用业务bean中的destroy方法 执行销毁动作。
         if (bean instanceof DisposableBean) {
             ((DisposableBean) bean).destroy();
         }
 
-        // 2. 注解配置 destroy-method {判断是为了避免二次执行销毁}
+        // 2. 注解配置 destroy-method {判断是为了避免二次执行销毁}：
+        // 若业务bean 既实现了DisposableBean，又在xml配置文件中 手工指定了销毁方法名（且方法名不为"destroy"）时，可以调用用户自定义的销毁方法
         if (StrUtil.isNotEmpty(destroyMethodName) && !(bean instanceof DisposableBean && "destroy".equals(this.destroyMethodName))) {
             Method destroyMethod = bean.getClass().getMethod(destroyMethodName);
             if (null == destroyMethod) {

@@ -12,9 +12,9 @@ public class BeanDefinition {
     private Class beanClass;
 
     private PropertyValues propertyValues;
-
+    // 增加 初始化方法名 变量 与 xml中的bean属性 init-method 对应
     private String initMethodName;
-    
+    // 增加 销毁方法名变量 与 xml中的bean属性 destroy-method对应
     private String destroyMethodName;
 
     public BeanDefinition(Class beanClass) {
