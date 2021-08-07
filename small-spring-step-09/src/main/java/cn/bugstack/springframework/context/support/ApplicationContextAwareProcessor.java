@@ -19,6 +19,7 @@ public class ApplicationContextAwareProcessor implements BeanPostProcessor {
     }
 
     @Override
+    /** 若业务bean的类 实现了 ApplicationContextAware 接口，才会在业务bean中回调setApplicationContext 方法，使业务bean获得 applicationContext对象*/
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
         if (bean instanceof ApplicationContextAware){
             ((ApplicationContextAware) bean).setApplicationContext(applicationContext);

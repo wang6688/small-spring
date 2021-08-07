@@ -46,7 +46,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         registerDisposableBeanIfNecessary(beanName, bean, beanDefinition);
 
         // 判断 SCOPE_SINGLETON、SCOPE_PROTOTYPE
-        if (beanDefinition.isSingleton()) {
+        if (beanDefinition.isSingleton()) { // 若bean 被定义为单例的则将其 放入到 singletonObjects  的map容器中，避免下次重复创建
             addSingleton(beanName, bean);
         }
         return bean;
@@ -55,12 +55,12 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
     protected void registerDisposableBeanIfNecessary(String beanName, Object bean, BeanDefinition beanDefinition) {
         // 非 Singleton 类型的 Bean 不执行销毁方法
         if (!beanDefinition.isSingleton()) return;
-
+        // 只对 scope 为单例的bean （且 该业务bean的类实现了DisposableBean 接口或指定了销毁方法名）执行销毁方法
         if (bean instanceof DisposableBean || StrUtil.isNotEmpty(beanDefinition.getDestroyMethodName())) {
             registerDisposableBean(beanName, new DisposableBeanAdapter(bean, beanName, beanDefinition));
         }
     }
-
+    /***查找 beanDefinition对象的 构造器，cglib动态代理/jdk动态代理 缺省使用 无参构造器来实例化bean对象  */
     protected Object createBeanInstance(BeanDefinition beanDefinition, String beanName, Object[] args) {
         Constructor constructorToUse = null;
         Class<?> beanClass = beanDefinition.getBeanClass();
@@ -156,6 +156,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
     @Override
     public Object applyBeanPostProcessorsBeforeInitialization(Object existingBean, String beanName) throws BeansException {
         Object result = existingBean;
+        // 此处会调用到 ApplicationContextAware 的后置处理器
         for (BeanPostProcessor processor : getBeanPostProcessors()) {
             Object current = processor.postProcessBeforeInitialization(result, beanName);
             if (null == current) return result;

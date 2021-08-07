@@ -20,6 +20,7 @@ public class ProxyBeanFactory implements FactoryBean<IUserDao> {
             
             return "你被代理了 " + method.getName() + "：" + hashMap.get(args[0].toString());
         };
+        // 使用反射包中的 代理类，新建一个出 IuserDao类的  代理实例对象，handler为 创建代理实例对象时执行的逻辑
         return (IUserDao) Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(), new Class[]{IUserDao.class}, handler);
     }
 

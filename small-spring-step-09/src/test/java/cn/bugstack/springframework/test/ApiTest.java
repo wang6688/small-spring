@@ -37,7 +37,7 @@ public class ApiTest {
         // 1.初始化 BeanFactory
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring.xml");
         applicationContext.registerShutdownHook();
-        // 2. 调用代理方法
+        // 2. 调用代理方法： 此处会 使用 ProxyBeanFactory 实例化出 一个 IUserDao 接口的 实例对象
         UserService userService = applicationContext.getBean("userService", UserService.class);
         System.out.println("测试结果：" + userService.queryUserInfo());
     }

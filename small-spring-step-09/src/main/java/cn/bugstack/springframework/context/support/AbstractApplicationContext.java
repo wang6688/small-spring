@@ -28,19 +28,24 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader i
         // 1. 创建 BeanFactory，并加载 BeanDefinition
         refreshBeanFactory();
 
-        // 2. 获取 BeanFactory
+        // 2. 获取 BeanFactory，此处的beanFactory 来自于步骤1中
         ConfigurableListableBeanFactory beanFactory = getBeanFactory();
 
-        // 3. 添加 ApplicationContextAwareProcessor，让继承自 ApplicationContextAware 的 Bean 对象都能感知所属的 ApplicationContext
+        // 3. 添加 ApplicationContextAwareProcessor，让继承自 ApplicationContextAware 的 Bean 对象都能感知所属的 ApplicationContext，当执行初始化方法时会回调该后置处理器方法
+        // 此操作 向 beanPostProcessors的list容器中添加了一个后置处理器对象，在实例化好业务bean并填充完属性后 回调该后置处理器，
+        // 回调该后置处理器时，若 业务bean的类实现了ApplicationContextAware 接口，则会回调setApplicationContext方法为业务bean对象设置context
         beanFactory.addBeanPostProcessor(new ApplicationContextAwareProcessor(this));
 
         // 4. 在 Bean 实例化之前，执行 BeanFactoryPostProcessor (Invoke factory processors registered as beans in the context.)
+        // 查找并调用 实现了BeanFactoryPostProcessor 接口的 beanFacotry的后置处理器实现类，以此达到修改beanDefinition对象的目的。
         invokeBeanFactoryPostProcessors(beanFactory);
 
         // 5. BeanPostProcessor 需要提前于其他 Bean 对象实例化之前执行注册操作
+        // 查找 实现了 BeanPostProcessor接口的bean的后置处理器实现类，将其注册到beanPostProcessors 的list容器中，
+        // 以便在实例化好bean填充完属性后调用对应的后置处理器 来达到在将bean实例放置到singletonObjects的容器中之前修改 bean的实例对象
         registerBeanPostProcessors(beanFactory);
 
-        // 6. 提前实例化单例Bean对象
+        // 6. 提前实例化单例Bean对象： 将beanDefinitionMap中的所有对象作预实例化
         beanFactory.preInstantiateSingletons();
     }
 
