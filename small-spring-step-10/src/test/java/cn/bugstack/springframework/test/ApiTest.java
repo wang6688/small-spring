@@ -15,6 +15,7 @@ public class ApiTest {
     @Test
     public void test_event() {
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring.xml");
+        // 回调自定义事件的 事件监听器的 方法
         applicationContext.publishEvent(new CustomEvent(applicationContext, 1019129009086763L, "成功了！"));
 
         applicationContext.registerShutdownHook();

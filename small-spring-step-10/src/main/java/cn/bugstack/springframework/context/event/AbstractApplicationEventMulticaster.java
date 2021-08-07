@@ -51,6 +51,7 @@ public abstract class AbstractApplicationEventMulticaster implements Application
      * @return a Collection of ApplicationListeners
      * @see cn.bugstack.springframework.context.ApplicationListener
      */
+    /** 获得 event 对应的 事件监听器 */
     protected Collection<ApplicationListener> getApplicationListeners(ApplicationEvent event) {
         LinkedList<ApplicationListener> allListeners = new LinkedList<ApplicationListener>();
         for (ApplicationListener<ApplicationEvent> listener : applicationListeners) {
@@ -60,7 +61,7 @@ public abstract class AbstractApplicationEventMulticaster implements Application
     }
 
     /**
-     * 监听器是否对该事件感兴趣
+     * 监听器是否对该事件感兴趣 : 判断 传输 的event 是否 支持 applicationListener
      */
     protected boolean supportsEvent(ApplicationListener<ApplicationEvent> applicationListener, ApplicationEvent event) {
         Class<? extends ApplicationListener> listenerClass = applicationListener.getClass();

@@ -30,6 +30,7 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
     }
 
     @Override
+    /*** 注意此方法， 会将 type接口的 所有实现类 进行 实例化->属性赋值->初始化-> 加入 singletonObjects的map容器中*/
     public <T> Map<String, T> getBeansOfType(Class<T> type) throws BeansException {
         Map<String, T> result = new HashMap<>();
         beanDefinitionMap.forEach((beanName, beanDefinition) -> {
@@ -54,6 +55,7 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
     }
 
     @Override
+    /*** 将 beanDefinitionMap 中的 所有beanDefinition 进行实例化 */
     public void preInstantiateSingletons() throws BeansException {
         beanDefinitionMap.keySet().forEach(this::getBean);
     }

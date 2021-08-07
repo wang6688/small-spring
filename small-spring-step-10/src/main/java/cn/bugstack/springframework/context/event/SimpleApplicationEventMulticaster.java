@@ -19,8 +19,10 @@ public class SimpleApplicationEventMulticaster extends AbstractApplicationEventM
 
     @SuppressWarnings("unchecked")
     @Override
+    /** 获得 event 支持的事件监听器*/
     public void multicastEvent(final ApplicationEvent event) {
         for (final ApplicationListener listener : getApplicationListeners(event)) {
+            // 回调事件监听器 对应的事件 方法
             listener.onApplicationEvent(event);
         }
     }
