@@ -16,9 +16,13 @@ import java.util.concurrent.ConcurrentHashMap;
  * Create by 小傅哥(fustack)
  */
 public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFactory implements BeanDefinitionRegistry, ConfigurableListableBeanFactory {
-
+    // 此处的 beanDefinitionMap 采用 线程安全的hashMap
     private Map<String, BeanDefinition> beanDefinitionMap = new ConcurrentHashMap<>();
-
+    // 此处还有个 instantiationStrategy 的代理策略对象（cglib/jdk动态反射代理) 继承于其父类 AbstractAutowireCapableBeanFactory中
+    // 此处还有个 beanPostProcessors 对象 继承来自于其爷爷类AbstractBeanFactory（其父类AbstractAutowireCapableBeanFactory中的父类AbstractBeanFactory）中
+    // 此处还有个 singletonObjects 的map容器 继承来自于 其曾祖父类DefaultSingletonBeanRegistry（其父类AbstractAutowireCapableBeanFactory的父类AbstractBeanFactory 的父类DefaultSingletonBeanRegistry）中
+    // 此处还有个 disposableBeans 的map容器 继承来自于  其曾祖父类DefaultSingletonBeanRegistry（其父类AbstractAutowireCapableBeanFactory的父类AbstractBeanFactory 的父类DefaultSingletonBeanRegistry）中
+    // 此处还有个 beanClossLoader  对象 继承来自于其爷爷类AbstractBeanFactory（其父类AbstractAutowireCapableBeanFactory中的父类AbstractBeanFactory）中
     @Override
     public void registerBeanDefinition(String beanName, BeanDefinition beanDefinition) {
         beanDefinitionMap.put(beanName, beanDefinition);

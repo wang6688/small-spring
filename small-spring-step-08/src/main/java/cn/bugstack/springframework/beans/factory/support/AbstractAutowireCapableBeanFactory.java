@@ -115,7 +115,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
             }
         }
 
-        // 1. 执行 BeanPostProcessor Before 处理
+        // 1. 执行 BeanPostProcessor Before 处理： 对应于 AbstractApplicationContext::refresh()方法中的第3步将 ApplicationContextAwareProcessor添加为bean的后置处理器了
         Object wrappedBean = applyBeanPostProcessorsBeforeInitialization(bean, beanName);
 
         // 执行 Bean 对象的初始化方法
