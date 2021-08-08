@@ -91,7 +91,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
                 constructorToUse = ctor;
                 break;
             }
-        }
+        } // 使用cglib代理实例化 bean对象
         return getInstantiationStrategy().instantiate(beanDefinition, beanName, constructorToUse, args);
     }
 
@@ -101,6 +101,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
     protected void applyPropertyValues(String beanName, Object bean, BeanDefinition beanDefinition) {
         try {
             PropertyValues propertyValues = beanDefinition.getPropertyValues();
+            // 若一个beanDefinition中存在两个同名的属性值， 则在为实例对象的属性赋值时会依次进行赋值，后面的会覆盖前面的属性值
             for (PropertyValue propertyValue : propertyValues.getPropertyValues()) {
 
                 String name = propertyValue.getName();

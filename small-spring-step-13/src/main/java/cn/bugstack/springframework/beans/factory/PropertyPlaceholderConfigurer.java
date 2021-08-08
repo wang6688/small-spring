@@ -16,9 +16,7 @@ import java.util.Properties;
  * i.e. a properties file. Useful for custom config files targeted at system
  * administrators that override bean properties configured in the application context.
  * <p>
- * 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
- * 公众号：bugstack虫洞栈
- * Create by 小傅哥(fustack)
+ 属性占位符 预读解析配置类，作为 一个BeanFactory的 后置处理器。
  */
 public class PropertyPlaceholderConfigurer implements BeanFactoryPostProcessor {
 
@@ -42,7 +40,7 @@ public class PropertyPlaceholderConfigurer implements BeanFactoryPostProcessor {
             Resource resource = resourceLoader.getResource(location);
             Properties properties = new Properties();
             properties.load(resource.getInputStream());
-
+            /***此处 可用于为 beanDefinitionMap 中的类 将类中的属性 中的"${}"占位符标记，解析成真正的属性值，添加到 beanDefinition的属性值中*/
             String[] beanDefinitionNames = beanFactory.getBeanDefinitionNames();
             for (String beanName : beanDefinitionNames) {
                 BeanDefinition beanDefinition = beanFactory.getBeanDefinition(beanName);

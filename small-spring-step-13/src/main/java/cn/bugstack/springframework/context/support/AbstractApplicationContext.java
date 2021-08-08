@@ -51,7 +51,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader i
         // 5. BeanPostProcessor 需要提前于其他 Bean 对象实例化之前执行注册操作
         registerBeanPostProcessors(beanFactory);
 
-        // 6. 初始化事件发布者
+        // 6. 初始化事件发布者 ： 放入到 singletonObjects的map容器 中
         initApplicationEventMulticaster();
 
         // 7. 注册事件监听器
@@ -67,7 +67,8 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader i
     protected abstract void refreshBeanFactory() throws BeansException;
 
     protected abstract ConfigurableListableBeanFactory getBeanFactory();
-
+    /** 获得 实现了BeanFactoryPostProcessor 接口 的PropertyPlaceholderConfigurer 后置处理器的实现类，用于在实例化出bean之前，修改 beanDefinition对象中的信息
+     * 此处调用 可用于 为 PropertyPlaceholderConfigurer 的类中的location 属性，读取location对应的token.properties文件，并解析文件中的内容 为键值对*/
     private void invokeBeanFactoryPostProcessors(ConfigurableListableBeanFactory beanFactory) {
         Map<String, BeanFactoryPostProcessor> beanFactoryPostProcessorMap = beanFactory.getBeansOfType(BeanFactoryPostProcessor.class);
         for (BeanFactoryPostProcessor beanFactoryPostProcessor : beanFactoryPostProcessorMap.values()) {

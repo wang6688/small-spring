@@ -16,12 +16,12 @@ import java.util.Set;
  * Create by 小傅哥(fustack)
  */
 public class ClassPathScanningCandidateComponentProvider {
-
+    // 扫描 包路径下 带有  @Component 注解 的类，将扫描到的 Component 类 封装成BeanDefinition ，进行返回
     public Set<BeanDefinition> findCandidateComponents(String basePackage) {
         Set<BeanDefinition> candidates = new LinkedHashSet<>();
         Set<Class<?>> classes = ClassUtil.scanPackageByAnnotation(basePackage, Component.class);
         for (Class<?> clazz : classes) {
-            candidates.add(new BeanDefinition(clazz));
+            candidates.add(new BeanDefinition(clazz));  // 默认作用域为单例
         }
         return candidates;
     }

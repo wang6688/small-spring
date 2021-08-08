@@ -73,16 +73,17 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
         Document document = reader.read(inputStream);
         Element root = document.getRootElement();
 
-        // 解析 context:component-scan 标签，扫描包中的类并提取相关信息，用于组装 BeanDefinition
+        // 解析 context:component-scan 标签，扫描 base-package属性[可支持 , 分隔的多个包路径]对应包中的类并提取相关信息，用于组装 BeanDefinition
         Element componentScan = root.element("component-scan");
         if (null != componentScan) {
             String scanPath = componentScan.attributeValue("base-package");
             if (StrUtil.isEmpty(scanPath)) {
                 throw new BeansException("The value of base-package attribute can not be empty or null");
             }
+            // 扫描base-package 属性中的 包路径，并查找到包含@Component注解类，封装成beanDefinition对象放入到 beanDefinitionMap中
             scanPackage(scanPath);
         }
-
+        //扫描 xml配置文件中的 bean 节点解析成 beanDefinition对象 放入到 beanDefinitionMap 中。
         List<Element> beanList = root.elements("bean");
         for (Element bean : beanList) {
 
@@ -109,7 +110,7 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
             if (StrUtil.isNotEmpty(beanScope)) {
                 beanDefinition.setScope(beanScope);
             }
-
+            // 读取并解析 xml 中 bean节点的 属性节点
             List<Element> propertyList = bean.elements("property");
             // 读取属性并填充
             for (Element property : propertyList) {
@@ -126,7 +127,7 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
             if (getRegistry().containsBeanDefinition(beanName)) {
                 throw new BeansException("Duplicate beanName[" + beanName + "] is not allowed");
             }
-            // 注册 BeanDefinition
+            // 注册 BeanDefinition： 将 beanDefinition 对象放入到 beanDefinitionMap中
             getRegistry().registerBeanDefinition(beanName, beanDefinition);
         }
     }
@@ -134,6 +135,7 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
     private void scanPackage(String scanPath) {
         String[] basePackages = StrUtil.splitToArray(scanPath, ',');
         ClassPathBeanDefinitionScanner scanner = new ClassPathBeanDefinitionScanner(getRegistry());
+        // 扫描多个包路径
         scanner.doScan(basePackages);
     }
 
