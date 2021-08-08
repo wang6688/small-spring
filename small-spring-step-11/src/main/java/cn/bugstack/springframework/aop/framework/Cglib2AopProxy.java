@@ -37,7 +37,7 @@ public class Cglib2AopProxy implements AopProxy {
         enhancer.setCallback(new DynamicAdvisedInterceptor(advised));
         return enhancer.create();
     }
-
+    // 动态通知拦截
     private static class DynamicAdvisedInterceptor implements MethodInterceptor {
 
         private final AdvisedSupport advised;

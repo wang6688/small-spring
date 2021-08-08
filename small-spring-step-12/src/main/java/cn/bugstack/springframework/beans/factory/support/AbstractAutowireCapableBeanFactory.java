@@ -30,9 +30,9 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
     protected Object createBean(String beanName, BeanDefinition beanDefinition, Object[] args) throws BeansException {
         Object bean = null;
         try {
-            // 判断是否返回代理 Bean 对象
+            // 判断是否返回代理 Bean 对象 : 为业务bean 只使用jdk動態代理 织入AOP代理拦截器
             bean = resolveBeforeInstantiation(beanName, beanDefinition);
-            if (null != bean) {
+            if (null != bean) {   // 織入成功后，直接返回，不再將其放入到 singletonObjects 的map容器中
                 return bean;
             }
             // 实例化 Bean
@@ -54,15 +54,15 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         }
         return bean;
     }
-
+    // 解决业务bean在实例化之前的一些操作，为业务bean 织入AOP代理拦截器
     protected Object resolveBeforeInstantiation(String beanName, BeanDefinition beanDefinition) {
         Object bean = applyBeanPostProcessorsBeforeInstantiation(beanDefinition.getBeanClass(), beanName);
-        if (null != bean) {
+        if (null != bean) {  // 將織入AOP 代理的業務bean在初始化后 再使用後置處理器 作一些操作（其實這個調用什麼都沒做）
             bean = applyBeanPostProcessorsAfterInitialization(bean, beanName);
         }
         return bean;
     }
-
+    // 在bean实例初始化之前 ，申请后置处理器，为业务bean 织入  AOP 的拦截器
     protected Object applyBeanPostProcessorsBeforeInstantiation(Class<?> beanClass, String beanName) {
         for (BeanPostProcessor beanPostProcessor : getBeanPostProcessors()) {
             if (beanPostProcessor instanceof InstantiationAwareBeanPostProcessor) {
@@ -91,7 +91,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
                 constructorToUse = ctor;
                 break;
             }
-        }
+        }  // 默认使用cglib代理  实例化对象
         return getInstantiationStrategy().instantiate(beanDefinition, beanName, constructorToUse, args);
     }
 

@@ -33,7 +33,7 @@ public class Cglib2AopProxy implements AopProxy {
         enhancer.setCallback(new DynamicAdvisedInterceptor(advised));
         return enhancer.create();
     }
-
+    // 动态通知拦截
     private static class DynamicAdvisedInterceptor implements MethodInterceptor {
 
         private final AdvisedSupport advised;
@@ -42,9 +42,10 @@ public class Cglib2AopProxy implements AopProxy {
             this.advised = advised;
         }
 
-        @Override
+        @Override //        // 获得cglib代理对象要执行的目标方法，若配置的切面表达式与代理类中的目标实现类 匹配上，则调用拦截器的方法
         public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
             CglibMethodInvocation methodInvocation = new CglibMethodInvocation(advised.getTargetSource().getTarget(), method, objects, methodProxy);
+            // 注意： 此处若切面表达式配置的是接口类 其也能与接口的实现类匹配成功
             if (advised.getMethodMatcher().matches(method, advised.getTargetSource().getTarget().getClass())) {
                 return advised.getMethodInterceptor().invoke(methodInvocation);
             }

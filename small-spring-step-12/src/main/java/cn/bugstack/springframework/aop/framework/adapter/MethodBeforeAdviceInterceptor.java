@@ -20,9 +20,10 @@ public class MethodBeforeAdviceInterceptor implements MethodInterceptor {
         this.advice = advice;
     }
 
-    @Override
+    @Override // 此处由 前置通知拦截器 调用 前置通知类的before 方法，此处的methodInvocation 为 接口类中用户要执行的方法名
     public Object invoke(MethodInvocation methodInvocation) throws Throwable {
         this.advice.before(methodInvocation.getMethod(), methodInvocation.getArguments(), methodInvocation.getThis());
+//        反射调用到  用户想要执行的目标实现类对象中的目标方法
         return methodInvocation.proceed();
     }
 

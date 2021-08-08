@@ -48,7 +48,8 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader i
         // 4. 在 Bean 实例化之前，执行 BeanFactoryPostProcessor (Invoke factory processors registered as beans in the context.)
         invokeBeanFactoryPostProcessors(beanFactory);
 
-        // 5. BeanPostProcessor 需要提前于其他 Bean 对象实例化之前执行注册操作
+        // 5. BeanPostProcessor 需要提前于其他 Bean 对象实例化之前执行注册操作：
+        // 此处会将DefaultAdvisorAutoProxyCreator 类实例化出一个自动aop代理的拦截器对象放入到singletonObjects中，并且 将其加入到 beanPostProcessors的list中
         registerBeanPostProcessors(beanFactory);
 
         // 6. 初始化事件发布者
