@@ -27,10 +27,13 @@ public class JdkDynamicAopProxy implements AopProxy, InvocationHandler {
 
     @Override
     public Object getProxy() {
+        // 由于该类实现了InvocationHandler 接口的invoke方法， 所以在使用代理生成代理实例对象时 传入的this 就是 invoke（）方法
         return Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(), advised.getTargetSource().getTargetClass(), this);
     }
 
     @Override
+    /**  若用户要执行的方法 符合 切面表达式的拦截规则，则先调用执行  拦截器方法（在拦截器方法中会放行到下一个拦截器/用户想要执行的目标方法），
+     *   若用户要执行的方法  不符合切面表达式的拦截规则，则直接然 调用 用户想要执行的目标方法*/
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         if (advised.getMethodMatcher().matches(method, advised.getTargetSource().getTarget().getClass())) {
             MethodInterceptor methodInterceptor = advised.getMethodInterceptor();

@@ -23,7 +23,7 @@ import java.util.Set;
  * Create by 小傅哥(fustack)
  */
 public abstract class AbstractApplicationEventMulticaster implements ApplicationEventMulticaster, BeanFactoryAware {
-
+    // applicationListeners 用于 存放 应用事件监听器，  对于观察者实现和容器事件监听，这个对象是个关键
     public final Set<ApplicationListener<ApplicationEvent>> applicationListeners = new LinkedHashSet<>();
 
     private BeanFactory beanFactory;

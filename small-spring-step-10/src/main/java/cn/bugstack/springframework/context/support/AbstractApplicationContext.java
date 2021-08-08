@@ -31,7 +31,7 @@ import java.util.Map;
 public abstract class AbstractApplicationContext extends DefaultResourceLoader implements ConfigurableApplicationContext {
 
     public static final String APPLICATION_EVENT_MULTICASTER_BEAN_NAME = "applicationEventMulticaster";
-
+    // 该对象 会再 spring 刷新容器 时 调用initApplicationEventMulticaster() 方法 进行 赋值
     private ApplicationEventMulticaster applicationEventMulticaster;
 
     @Override
@@ -60,7 +60,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader i
         // 8. 提前实例化单例Bean对象 ： 由于 该案例中 只有3个bean且这3个bean都是 实现了ApplicationListener 接口，所以已经再步骤7中实例化好并加入到 singletonObjects的map容器中，所以该行代码什么都没做
         beanFactory.preInstantiateSingletons();
 
-        // 9. 发布容器刷新完成事件
+        // 9. 发布容器刷新完成事件： 发布上下文 刷新事件的监听器到applicationEventMulticaster对象中，使其回调 刷新事件监听器的方法
         finishRefresh();
     }
 
@@ -139,7 +139,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader i
 
     @Override
     public void close() {
-        // 发布容器关闭事件： 回调 容器关闭的事件
+        // 发布容器关闭事件： 回调 容器关闭的事件监听器的方法
         publishEvent(new ContextClosedEvent(this));
 
         // 执行销毁单例bean的销毁方法

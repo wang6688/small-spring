@@ -17,7 +17,7 @@ import cn.bugstack.springframework.beans.BeansException;
 public class ClassPathXmlApplicationContext extends AbstractXmlApplicationContext {
 
     private String[] configLocations;
-
+    // 此处有个 applicationEventMulticaster 对象，继承来自于其父类AbstractXmlApplicationContext的父类AbstractRefreshableApplicationContext的AbstractApplicationContext的父类中的 applicationEventMulticaster
     public ClassPathXmlApplicationContext() {
     }
 
