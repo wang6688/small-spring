@@ -1,33 +1,66 @@
 # :seedling: Spring 手撸专栏 - 易学、好写、能懂！
 
+![](https://github.com/fuzhengwei/small-spring/blob/main/docs/assets/img/HeadDiagram.png?raw=true)
+
 >小傅哥，一线互联网 Java 工程师、架构师，开发过交易、营销类项目，实现过运营、活动类项目，设计过中间件，组织过系统重构，编写过技术专利。不仅从事业务系统的开发工作，也经常做一些字节码插桩类的设计和实现，对架构的设计和落地有丰富的经验。在热衷于Java语言的同时，也喜欢研究中继器、I/O板卡、C#和PHP，是一个技术活跃的折腾者。
 >[:pencil2: 虫洞 · 科技栈，博主](https://bugstack.cn)，[:blue_book: 《重学Java设计模式》图书作者](https://item.jd.com/13218336.html)
 
 <br/>
 <div align="center">
-    <a href="https://bugstack.cn" style="text-decoration:none"><img src="https://bugstack.cn/assets/images/icon.svg" width="128px"></a>
+    <a href="https://bugstack.cn" style="text-decoration:none"><img src="https://bugstack.cn/images/system/CodeGuide-LOGO.png?raw=true" width="256px"></a>
 </div>
-<br/>  
+<br/>
 
 <div align="center">
-<a href="https://github.com/fuzhengwei/CodeGuide"><img src="https://badgen.net/github/stars/fuzhengwei/CodeGuide?icon=github&color=4ab8a1"></a>
-<a href="https://github.com/fuzhengwei/CodeGuide"><img src="https://badgen.net/github/forks/fuzhengwei/CodeGuide?icon=github&color=4ab8a1"></a>
-<a href="https://bugstack.cn" target="_blank"><img src="https://bugstack.cn/assets/images/onlinebook.svg"></a>
-<a href="https://bugstack.cn/assets/images/qrcode.png?x-oss-process=style/may"><img src="https://itedus.cn/_media/wxbugstack.svg"></a>
+	<a href="https://bugstack.cn/md/other/guide-to-reading.html"><img src="https://bugstack.cn/images/system/CodeGuide-Read.svg"></a>
+	<a href="https://bugstack.cn/images/personal/qrcode.png"><img src="https://bugstack.cn/images/system/CodeGuide-WeiXinCode.svg"></a>
+	<a href="https://bugstack.cn/md/knowledge/pdf/2021-01-26-Java%E9%9D%A2%E7%BB%8F%E6%89%8B%E5%86%8CPDF%E4%B8%8B%E8%BD%BD.html"><img src="https://bugstack.cn/images/system/CodeGuide-JavaPDF.svg"></a>
+	<a href="https://mp.weixin.qq.com/s/VthCUlT8oAJqKOoq5_NzSQ"><img src="https://bugstack.cn/images/system/CodeGuide-Lottery.svg"></a>
+	<a href="https://github.com/fuzhengwei/CodeGuide"><img src="https://badgen.net/github/stars/fuzhengwei/CodeGuide?icon=github&color=4ab8a1"></a>
+</div>
+
+<br/>
+<div align="center">
+    <table>
+        <tr>
+            <td align=“center">添加微信：fustack</td>
+            <td align=“center">关注公众号：bugstack虫洞栈</td>
+        </tr>
+        <tr>
+            <td align=“center"><img src="https://bugstack.cn/images/personal/fustack.png" width="128px"></td>
+            <td align=“center"><img src="https://bugstack.cn/images/personal/qrcode.png" width="128px"></td>
+        </tr>
+    </table>
+</div>
+<br/>  
+     
+<div align="center">
+    <p align="center"><b>知识星球</b>：<a href="https://t.zsxq.com/jAi2nUf">码农会锁 👇</a></p>
+   <table>
+  		<tbody>
+            <tr>
+               <td align="center" valign="middle">
+                <a href="https://t.zsxq.com/jAi2nUf"><img src="https://bugstack.cn/images/system/CodeGuide-xingqiu-2.png"></a>
+              </td>       
+            </tr>
+  		</tbody>
+	</table>
 </div>
 
 ## ⛳ **目录**
 
-- 代码仓库：[Github](https://github.com/fuzhengwei/small-spring) | [Gitee](https://gitee.com/fustack/small-spring) | [CodeChina](https://codechina.csdn.net/Yao__Shun__Yu/small-spring)
+- 代码仓库：[Github](https://github.com/fuzhengwei/small-spring) | [Gitee](https://gitee.com/fustack/small-spring) | [CodeChina](https://codechina.csdn.net/Yao__Shun__Yu/small-spring)  
 - [学习说明 🍁`(学习套路&源码使用)`](https://github.com/fuzhengwei/small-spring#bookmark-%E5%AD%A6%E4%B9%A0%E8%AF%B4%E6%98%8E)
+- [下电子书](https://github.com/fuzhengwei/small-spring#-pdf-%E4%B8%8B%E8%BD%BD) 📚[《手撸 Spring》 - `新增专属3个章节，代理类属性填充、循环依赖、类型转换`](https://download.csdn.net/download/Yao__Shun__Yu/21009038)
 - [章节目录](https://github.com/fuzhengwei/small-spring#pencil-%E7%AB%A0%E8%8A%82%E7%9B%AE%E5%BD%95)
 - [我的书籍](https://github.com/fuzhengwei/small-spring#books-%E6%88%91%E7%9A%84%E4%B9%A6%E7%B1%8D)
 - [问题交流](https://github.com/fuzhengwei/small-spring#paw_prints-%E9%97%AE%E9%A2%98%E4%BA%A4%E6%B5%81)
 - [参考资料](https://github.com/fuzhengwei/small-spring#tulip-%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99)
+- [学习打卡](https://github.com/fuzhengwei/small-spring/issues) - 👣留下你学习的足迹，进度、问题、想法、意见等等，提交[`issue`](https://github.com/fuzhengwei/small-spring/issues/new)同好交流、共同进步
 
 ## :bookmark: 学习说明
 
-本仓库以 Spring 源码学习为目的，通过手写简化版 Spring 框架，了解 Spring 核心原理。
+本仓库以 Spring 源码学习为目的，通过手写简化版 Spring 框架，了解 Spring 核心原理。[Go -> 详细介绍](https://mp.weixin.qq.com/s/kYio8zIG5UL-To3SV-uRmA)
 
 在手写的过程中会简化 Spring 源码，摘取整体框架中的核心逻辑，简化代码实现过程，保留核心功能，例如：IOC、AOP、Bean生命周期、上下文、作用域、资源处理等内容实现。
 
@@ -43,31 +76,39 @@
 
 4. 如果你在学习的过程中遇到什么问题，包括：不能运行、优化意见、文字错误等任何问题都可以提交issue，也可以联系作者：`小傅哥` 的微信，`fustack`
 
-5. 在专栏的内容编写中，每一个章节都提供了清晰的设计图稿和对应的类图，所以学习过程中一定不要只是在乎代码是怎么编写的，更重要的是理解这些设计的内容是如何来的。包括不限于如下案例：
+5. 在专栏的内容编写中，每一个章节都提供了清晰的设计图稿和对应的类图，所以学习过程中一定不要只是在乎代码是怎么编写的，更重要的是理解这些设计的内容是如何来的，在这个过程中不断的实现Bean生命周期的全部核心内容，如下图：
 
 
-    |   Spring 容器设计图稿   |
+    |   Spring Bean 的生命周期   |
     | ---- |
-    |   ![](https://github.com/fuzhengwei/small-spring/blob/main/docs/assets/img/spring-3-01.png)   |
-    |   ![](https://github.com/fuzhengwei/small-spring/blob/main/docs/assets/img/spring-3-02.png)   |
+    |   ![](https://github.com/fuzhengwei/small-spring/blob/main/docs/assets/img/Bean%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png?raw=true)  |
+
+## 📚 PDF 下载
+
+![](https://github.com/fuzhengwei/small-spring/blob/main/docs/assets/img/spring-0-04.png?raw=true)
+
+PDF 下载：[https://download.csdn.net/download/Yao__Shun__Yu/21009038](https://download.csdn.net/download/Yao__Shun__Yu/21009038)
 
 ## :pencil: 章节目录
 
-- [x] [`第 01 章：开篇介绍，我要带你撸 Spring 啦！`](https://bugstack.cn/spring/2021/05/16/%E7%AC%AC1%E7%AB%A0-%E5%BC%80%E7%AF%87%E4%BB%8B%E7%BB%8D-%E6%89%8B%E5%86%99Spring%E8%83%BD%E7%BB%99%E4%BD%A0%E5%B8%A6%E6%9D%A5%E4%BB%80%E4%B9%88.html)
-- [x] [`第 02 章：小试牛刀，实现一个简单的Bean容器`](https://bugstack.cn/spring/2021/05/20/%E7%AC%AC2%E7%AB%A0-%E5%B0%8F%E8%AF%95%E7%89%9B%E5%88%80-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84Bean%E5%AE%B9%E5%99%A8.html)
-- [x] [`第 03 章：初显身手，运用设计模式，实现 Bean 的定义、注册、获取`](https://bugstack.cn/spring/2021/05/23/%E7%AC%AC3%E7%AB%A0-%E5%88%9D%E6%98%BE%E8%BA%AB%E6%89%8B-%E8%BF%90%E7%94%A8%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%AE%9E%E7%8E%B0-Bean-%E7%9A%84%E5%AE%9A%E4%B9%89-%E6%B3%A8%E5%86%8C-%E8%8E%B7%E5%8F%96.html)
-- [x] [`第 04 章：崭露头角，基于Cglib实现含构造函数的类实例化策略`](https://bugstack.cn/spring/2021/05/30/%E7%AC%AC4%E7%AB%A0-%E5%B4%AD%E9%9C%B2%E5%A4%B4%E8%A7%92-%E5%9F%BA%E4%BA%8ECglib%E5%AE%9E%E7%8E%B0%E5%90%AB%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%9A%84%E7%B1%BB%E5%AE%9E%E4%BE%8B%E5%8C%96%E7%AD%96%E7%95%A5.html)
-- [x] [`第 05 章：一鸣惊人，为Bean对象注入属性和依赖Bean的功能实现`](https://bugstack.cn/spring/2021/06/02/%E7%AC%AC5%E7%AB%A0-%E4%B8%80%E9%B8%A3%E6%83%8A%E4%BA%BA-%E4%B8%BABean%E5%AF%B9%E8%B1%A1%E6%B3%A8%E5%85%A5%E5%B1%9E%E6%80%A7%E5%92%8C%E4%BE%9D%E8%B5%96Bean%E7%9A%84%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0.html)
-- [x] [`第 06 章：气吞山河，设计与实现资源加载器，从Spring.xml解析和注册Bean对象`](https://bugstack.cn/spring/2021/06/09/%E7%AC%AC6%E7%AB%A0-%E6%B0%94%E5%90%9E%E5%B1%B1%E6%B2%B3-%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0%E8%B5%84%E6%BA%90%E5%8A%A0%E8%BD%BD%E5%99%A8-%E4%BB%8ESpring.xml%E8%A7%A3%E6%9E%90%E5%92%8C%E6%B3%A8%E5%86%8CBean%E5%AF%B9%E8%B1%A1.html)
-- [x] [`第 07 章：所向披靡，实现应用上下文，自动识别、资源加载、扩展机制`](https://bugstack.cn/spring/2021/06/17/%E7%AC%AC7%E7%AB%A0-%E6%89%80%E5%90%91%E6%8A%AB%E9%9D%A1-%E5%AE%9E%E7%8E%B0%E5%BA%94%E7%94%A8%E4%B8%8A%E4%B8%8B%E6%96%87-%E8%87%AA%E5%8A%A8%E8%AF%86%E5%88%AB-%E8%B5%84%E6%BA%90%E5%8A%A0%E8%BD%BD-%E6%89%A9%E5%B1%95%E6%9C%BA%E5%88%B6.html)
-- [x] [`第 08 章：龙行有风，向虚拟机注册钩子，实现Bean对象的初始化和销毁方法`](https://bugstack.cn/spring/2021/06/23/%E7%AC%AC8%E7%AB%A0-%E9%BE%99%E8%A1%8C%E6%9C%89%E9%A3%8E-%E5%90%91%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%B3%A8%E5%86%8C%E9%92%A9%E5%AD%90-%E5%AE%9E%E7%8E%B0Bean%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96%E5%92%8C%E9%94%80%E6%AF%81%E6%96%B9%E6%B3%95.html)
-- [x] [`第 09 章：虎行有雨，定义标记类型Aware接口，实现感知容器对象`](https://bugstack.cn/spring/2021/06/23/%E7%AC%AC8%E7%AB%A0-%E9%BE%99%E8%A1%8C%E6%9C%89%E9%A3%8E-%E5%90%91%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%B3%A8%E5%86%8C%E9%92%A9%E5%AD%90-%E5%AE%9E%E7%8E%B0Bean%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96%E5%92%8C%E9%94%80%E6%AF%81%E6%96%B9%E6%B3%95.html)
-- [x] [`第 10 章：横刀跃马，关于Bean对象作用域以及FactoryBean的实现和使用`](https://bugstack.cn/spring/2021/06/30/%E7%AC%AC10%E7%AB%A0-%E6%A8%AA%E5%88%80%E8%B7%83%E9%A9%AC-%E5%85%B3%E4%BA%8EBean%E5%AF%B9%E8%B1%A1%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%BB%A5%E5%8F%8AFactoryBean%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%92%8C%E4%BD%BF%E7%94%A8.html)
-- [x] [`第 11 章：更上层楼，基于观察者实现，容器事件和事件监听器`](https://bugstack.cn/spring/2021/07/07/%E7%AC%AC11%E7%AB%A0-%E6%9B%B4%E4%B8%8A%E5%B1%82%E6%A5%BC-%E5%9F%BA%E4%BA%8E%E8%A7%82%E5%AF%9F%E8%80%85%E5%AE%9E%E7%8E%B0-%E5%AE%B9%E5%99%A8%E4%BA%8B%E4%BB%B6%E5%92%8C%E4%BA%8B%E4%BB%B6%E7%9B%91%E5%90%AC%E5%99%A8.html)
-- [x] [`第 12 章：炉火纯青，基于JDK和Cglib动态代理，实现AOP核心功能`](https://bugstack.cn/spring/2021/07/13/%E7%AC%AC12%E7%AB%A0-%E7%82%89%E7%81%AB%E7%BA%AF%E9%9D%92-%E5%9F%BA%E4%BA%8EJDK%E5%92%8CCglib%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86-%E5%AE%9E%E7%8E%B0AOP%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD.html)
-- [x] [`第 13 章：行云流水，把AOP动态代理，融入到Bean的生命周期`](https://bugstack.cn/spring/2021/07/22/%E7%AC%AC13%E7%AB%A0-%E8%A1%8C%E4%BA%91%E6%B5%81%E6%B0%B4-%E6%8A%8AAOP%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86-%E8%9E%8D%E5%85%A5%E5%88%B0Bean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html)
-- [x] [`第 14 章：笑傲江湖，通过注解配置和包自动扫描的方式完成Bean对象的注册`](https://bugstack.cn/spring/2021/07/27/%E7%AC%AC14%E7%AB%A0-%E7%AC%91%E5%82%B2%E6%B1%9F%E6%B9%96-%E9%80%9A%E8%BF%87%E6%B3%A8%E8%A7%A3%E9%85%8D%E7%BD%AE%E5%92%8C%E5%8C%85%E8%87%AA%E5%8A%A8%E6%89%AB%E6%8F%8F%E7%9A%84%E6%96%B9%E5%BC%8F%E5%AE%8C%E6%88%90Bean%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%B3%A8%E5%86%8C.html)
-- [ ] 第 15 章：待归档...
+- [x] [`难度【★☆☆☆☆】第 01 章：开篇介绍，我要带你撸 Spring 啦！`](https://mp.weixin.qq.com/s/g7YdIe_FSrk-WE8nQRO3TA) 
+- [x] [`难度【★☆☆☆☆】第 02 章：小试牛刀，实现一个简单的Bean容器`](https://mp.weixin.qq.com/s/fiWX6abSCiUKHAUa-HKg4A)
+- [x] [`难度【★☆☆☆☆】第 03 章：初显身手，运用设计模式，实现 Bean 的定义、注册、获取`](https://mp.weixin.qq.com/s/CgvQzm8B-CvQvXdxONC-lA)
+- [x] [`难度【★★☆☆☆】第 04 章：崭露头角，基于Cglib实现含构造函数的类实例化策略`](https://mp.weixin.qq.com/s/olrwapkSTQMyIGpR10ZDzA)
+- [x] [`难度【★★☆☆☆】第 05 章：一鸣惊人，为Bean对象注入属性和依赖Bean的功能实现`](https://mp.weixin.qq.com/s/EKoMDpa4q8TMikRM2wBIzw)
+- [x] [`难度【★★☆☆☆】第 06 章：气吞山河，设计与实现资源加载器，从Spring.xml解析和注册Bean对象`](https://mp.weixin.qq.com/s/GMcHUL7-oB7T0GWKjNC5Ng)
+- [x] [`难度【★★★★☆】第 07 章：所向披靡，实现应用上下文，自动识别、资源加载、扩展机制`](https://mp.weixin.qq.com/s/sv0H1NAuO3s90HC6QpjP5g)
+- [x] [`难度【★★★☆☆】第 08 章：龙行有风，向虚拟机注册钩子，实现Bean对象的初始化和销毁方法`](https://mp.weixin.qq.com/s/eQIg3Fd2oUeRLdSrRSGVPw)
+- [x] [`难度【★★★☆☆】第 09 章：虎行有雨，定义标记类型Aware接口，实现感知容器对象`](https://mp.weixin.qq.com/s/KP_4IQ2MZ-Pzq80WrJpCOA)
+- [x] [`难度【★★★☆☆】第 10 章：横刀跃马，关于Bean对象作用域以及FactoryBean的实现和使用`](https://mp.weixin.qq.com/s/npVKYqHVTDgYWa2Jq8PB-A)
+- [x] [`难度【★★★★☆】第 11 章：更上层楼，基于观察者实现，容器事件和事件监听器`](https://mp.weixin.qq.com/s/wf5XiY4AjFETLQZxEwcCEQ)
+- [x] [`难度【★★★★☆】第 12 章：炉火纯青，基于JDK和Cglib动态代理，实现AOP核心功能`](https://mp.weixin.qq.com/s/lDL14DMzaY_WzvmizDG-zw)
+- [x] [`难度【★★★★★】第 13 章：行云流水，把AOP动态代理，融入到Bean的生命周期`](https://mp.weixin.qq.com/s/BFYJLNzVO8NxjmeCUzmLyg)
+- [x] [`难度【★★★☆☆】第 14 章：笑傲江湖，通过注解配置和包自动扫描的方式完成Bean对象的注册`](https://mp.weixin.qq.com/s/1BWMc9sYUB9-uz2w7TZWmw)
+- [x] [`难度【★★★☆☆】第 15 章：万人之敌，通过注解给属性注入配置和Bean对象`](https://mp.weixin.qq.com/s/GNLA10AimmxUSZ0VoDI_xA)
+- [x] [`难度【★★★☆☆】【PDF专属】第 16 章：战无不胜，给代理对象的属性设置值`](https://download.csdn.net/download/Yao__Shun__Yu/21009038)
+- [x] [`难度【★★★★★】【PDF专属】第 17 章：攻无不克，通过三级缓存解决循环依赖`](https://download.csdn.net/download/Yao__Shun__Yu/21009038)
+- [x] [`难度【★★★★☆】【PDF专属】第 18 章：挂印封刀，数据类型转换工厂设计实现`](https://download.csdn.net/download/Yao__Shun__Yu/21009038)
 
 ## :books: 我的书籍
 
@@ -93,21 +134,26 @@
 
 <br/>
 <div align="center">
-    <a href="https://github.com/fuzhengwei/CodeGuide/wiki">关注小傅哥，你可以学到的更多！</a>
+    <a href="https://github.com/fuzhengwei/CodeGuide">关注小傅哥，你可以学到的更多！</a>
 </div>
 <br/>  
+
+- **问题反馈**：
+  1. [图3-2问题](https://github.com/fuzhengwei/small-spring/issues/9) 
+  2. [可以增加一些循环依赖处理吗? ](https://github.com/fuzhengwei/small-spring/issues/6)
+  3. [通过一次读者反馈，引出对 AspectJ 的介绍](https://github.com/fuzhengwei/small-spring/issues/4)
 
 - **加群交流**
 
     本群的宗旨是给大家提供一个良好的技术学习交流平台，所以杜绝一切广告！由于微信群人满 100 之后无法加入，请扫描下方二维码先添加作者 “小傅哥” 微信(fustack)，备注：`Spring学习加群`。
     
-    <img src="https://itedus.cn/_media/fustack.png?x-oss-process=style/may" width="180" height="180"/>
+    <img src="https://bugstack.cn/images/personal/fustack.png" width="180" height="180"/>
 
 - **公众号(bugstack虫洞栈)**
 
     沉淀、分享、成长，专注于原创专题案例，以最易学习编程的方式分享知识，让自己和他人都能有所收获。目前已完成的专题有；Netty4.x实战专题案例、用Java实现JVM、基于JavaAgent的全链路监控、手写RPC框架、DDD专题案例、源码分析等。
     
-    <img src="https://itedus.cn/_media/qrcode.png?x-oss-process=style/may" width="180" height="180"/>
+    <img src="https://bugstack.cn/images/personal/qrcode.png" width="180" height="180"/>
 
 ## :tulip: 参考资料
 
